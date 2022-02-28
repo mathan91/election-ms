@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: election-ms
+spec:
+  selector:
+    matchLabels:
+      app: election-ms
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: election-ms
+    spec:
+      containers:
+      - name: election-ms
+        image: election-ms
+        imagePullPolicy: Never
+        env:
+          - name: APP_ENV
+            value: development
+          - name: mongo_host
+            value: mongo.dashboard-cluster.svc.cluster.local:27017
+        ports:
+        - containerPort: 5000
