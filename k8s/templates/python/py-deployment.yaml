@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: election-ms
+  labels:
+    app: election-ms
 spec:
   selector:
     matchLabels:
